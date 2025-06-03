@@ -7,8 +7,8 @@ import Banner from '../components/Banner'
 function Home() {
   return (
     <div>
-    <Header/>
-    <SpecialityMenu/>
+    <Header />
+    <SpecialityMenu />
     <TopDoctors />
     <Banner />
     </div>
