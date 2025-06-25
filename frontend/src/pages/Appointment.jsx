@@ -1,13 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 function Appointment() {
   const { docId } = useParams();
-  const { doctors, currencySymbol } = useContext(AppContext);
+  const { doctors, currencySymbol, backendUrl, token, getDoctorsData } = useContext(AppContext);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  const navigate=useNavigate()
+
   const [docInfo, setDocInfo] = useState(null);
   const [docSlot, setDocSlot] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
@@ -78,6 +83,38 @@ function Appointment() {
       setDocSlot((prev) => [...prev, timeSlots]);
     }
   };
+
+  const bookAppointment=async ()=>{
+    if(!token){
+      toast.warn("Login to book appointment")
+      navigate('/login')
+    }
+
+    try {
+      
+      const date=docSlot[slotIndex][0].dateTime
+
+      let day=date.getDate()
+      let month=date.getMonth()+1
+      let year=date.getFullYear()
+
+      const slotDate=day + "-" + month + "-" + year
+      
+      const {data}=await axios.post(backendUrl + '/api/user/book-appointment', {docId, slotDate, slotTime}, {headers: {token}})
+
+      if(data.success){
+        toast.success(data.message)
+        getDoctorsData()
+        navigate('/my-appointments')
+      }else{
+        toast.error(data.message)
+      }
+
+    } catch (error) {
+      console.log(error)
+      toast.error(error.message)
+    }
+  }
 
   useEffect(() => {
     fetchDocInfo();
@@ -165,7 +202,7 @@ function Appointment() {
                 <p onClick={()=> setSlotTime(item.time)} className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${item.time === slotTime ? 'bg-[#5f6fff] text-white' : 'text-gray-400 border border-gray-300'}`} key={index}>{item.time.toLowerCase()}</p>
               ))}
           </div>
-          <button className="bg-[#5f6fff] text-white text-sm font-light px-14 py-3 rounded-full my-6">Book an Appointment</button>
+          <button onClick={bookAppointment} className="cursor-pointer bg-[#5f6fff] text-white text-sm font-light px-14 py-3 rounded-full my-6">Book an Appointment</button>
         </div>
 
         {/* --- Listing Related Doctors ---  */}
