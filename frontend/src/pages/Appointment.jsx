@@ -71,11 +71,24 @@ function Appointment() {
         // let formattedTime=currentDate.toLocaleTimeString([], {hours: '2-digit', minute: '2-digit', hour12:true})
         let formattedTime = formatTime(currentDate);
 
-        // add slots to array
-        timeSlots.push({
-          dateTime: new Date(currentDate),
-          time: formattedTime,
-        });
+        let day=currentDate.getDate()
+        let month=currentDate.getMonth()+1
+        let year=currentDate.getFullYear
+
+        let slotDate=day + "-" + month + "-" + year
+        let slotTime=formattedTime
+
+        const isSlotAvailable=docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slotTime) ? false : true
+
+        if(isSlotAvailable){
+          // add slots to array
+          timeSlots.push({
+              dateTime: new Date(currentDate),
+              time: formattedTime,
+           });
+        }
+
+        
 
         // increment current time by 30 minutes
         currentDate.setMinutes(currentDate.getMinutes() + 30);
