@@ -26,6 +26,7 @@ app.get("/", (req,res)=>{
     res.send("API working fine")
 })
 
+console.log("🔍 PORT from process.env:", process.env.PORT)
 app.listen(port, ()=>{
     console.log("Server started", port);
     
