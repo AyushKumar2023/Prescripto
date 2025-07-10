@@ -9,7 +9,7 @@ function Navbar() {
     const navigate=useNavigate()
     const [showMenu, setShowMenu]=useState(false)
     // const [token, setToken]=useState(true)
-    const {token, setToken, userData}=useContext(AppContext)
+    const {token, setToken, userData, adminUrl}=useContext(AppContext)
 
     function navigateLogin(){
         navigate('/login')
@@ -41,7 +41,9 @@ function Navbar() {
                 <li className='py-1'>CONTACT</li>
                 <hr className='border-none outline-none h-0.5 bg-[#5f6fff] w-3/5 m-auto hidden' />
             </NavLink>
+        
         </ul>
+        <button onClick={() => window.location.href = adminUrl} className='cursor-pointer border-2 border-[#5f6fff] font-semibold text-[#5f6fff] px-10 py-2 rounded-full hidden md:block'>Admin Panel</button>
         <div className='flex items-center gap-4'>
             {
                 token && userData ? 
