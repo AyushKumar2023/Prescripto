@@ -9,7 +9,9 @@ function Navbar() {
     const navigate=useNavigate()
     const [showMenu, setShowMenu]=useState(false)
     // const [token, setToken]=useState(true)
-    const {token, setToken, userData, adminUrl}=useContext(AppContext)
+    const {token, setToken, userData}=useContext(AppContext)
+    
+    const adminUrl='https://prescripto-admin-vfof.onrender.com'
 
     function navigateLogin(){
         navigate('/login')
