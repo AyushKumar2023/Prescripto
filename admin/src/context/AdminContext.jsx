@@ -11,8 +11,8 @@ const AdminContextProvider=(props)=>{
     const [appointments, setAppointments]=useState([])
     const [dashData, setDashData]=useState(false)
 
-    // const backendUrl = import.meta.env.VITE_BACKEND_URL
-    const backendUrl = "https://prescripto-backend-9mln.onrender.com"
+    // const backendUrl = 
+    const backendUrl = "https://prescripto-backend-9mln.onrender.com" || import.meta.env.VITE_BACKEND_URL
 
     const getAllDoctors=async () =>{
 
