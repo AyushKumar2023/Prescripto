@@ -7,8 +7,9 @@ export const AppContext=createContext()
 const AppContextProvider=(props)=>{
 
     const currencySymbol='$'
-    const backendUrl=import.meta.env.VITE_BACKEND_URL
-    const adminUrl=import.meta.env.VITE_ADMIN_URL
+    // const backendUrl=import.meta.env.VITE_BACKEND_URL
+    const backendUrl="https://prescripto-backend-9mln.onrender.com"
+    
 
     const [doctors, setDoctors]=useState([])
     const [token, setToken]=useState(localStorage.getItem('token') ? localStorage.getItem('token'):false)
@@ -56,7 +57,7 @@ const AppContextProvider=(props)=>{
         backendUrl,
         userData, setUserData,
         loadUserProfileData,
-        adminUrl
+    
     }
 
     useEffect(()=>{

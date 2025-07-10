@@ -5,7 +5,7 @@ export const AppContext= createContext()
 const AppContextProvider=(props)=>{
 
     const currency='$'
-    const userUrl=import.meta.env.VITE_USER_URL
+    
 
     const calculateAge = (dob) =>{
         const today=new Date()
@@ -29,7 +29,6 @@ const AppContextProvider=(props)=>{
         calculateAge,
         slotDateFormat,
         currency,
-        userUrl
     }
 
     return (
