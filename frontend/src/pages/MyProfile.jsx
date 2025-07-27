@@ -137,7 +137,7 @@ function MyProfile() {
       <div className='mt-10'>
         {
           isEdit
-          ? <button className='cursor-pointer border border-[#5f6fff] px-8 py-2 rounded-full hover:bg-[#5f6fff] hover:text-white transition-all duration-500' onClick={updateUserProfileData}>Save Information</button>
+          ? <button className='cursor-pointer border border-[#5f6fff] px-8 py-2 rounded-full hover:bg-[#5f6fff] hover:text-white transition-all duration-500' onChange={updateUserProfileData}>Save Information</button>
           : <button className='cursor-pointer border border-[#5f6fff] px-8 py-2 rounded-full hover:bg-[#5f6fff] hover:text-white transition-all duration-500' onClick={()=>(setIsEdit(true))}>Edit</button>
         }
       </div>
