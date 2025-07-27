@@ -90,7 +90,7 @@ function DoctorProfile() {
 
           {
             isEdit
-            ? <button onChange={updateProfile} className='cursor-pointer px-4 py-1 border border-[#5f6fff] text-sm rounded-full mt-5 hover:bg-[#5f6fff] hover:text-white transition-all'>Save Changes</button>
+            ? <button onClick={updateProfile} className='cursor-pointer px-4 py-1 border border-[#5f6fff] text-sm rounded-full mt-5 hover:bg-[#5f6fff] hover:text-white transition-all'>Save Changes</button>
             :  <button onClick={()=>setIsEdit(true)} className='cursor-pointer px-4 py-1 border border-[#5f6fff] text-sm rounded-full mt-5 hover:bg-[#5f6fff] hover:text-white transition-all'>Edit Profile</button>
           }
 
