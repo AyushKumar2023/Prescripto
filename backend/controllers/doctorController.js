@@ -213,9 +213,9 @@ const updateDoctorProfile=async (req, res)=>{
     try {
 
         const {docId}=req.doctor
-        const {fees, address, avalilable}=req.body
+        const {fees, address, available}=req.body
 
-        await doctorModel.findByIdAndUpdate(docId, {fees, address, avalilable})
+        await doctorModel.findByIdAndUpdate(docId, {fees, address, available})
 
         res.json({
             success:true,
