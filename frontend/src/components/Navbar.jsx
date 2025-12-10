@@ -11,7 +11,7 @@ function Navbar() {
     // const [token, setToken]=useState(true)
     const {token, setToken, userData}=useContext(AppContext)
     
-    const adminUrl='https://prescripto-admin-vfof.onrender.com'
+    
 
     function navigateLogin(){
         navigate('/login')
@@ -45,7 +45,7 @@ function Navbar() {
             </NavLink>
         
         </ul>
-        <button onClick={() => window.location.href = adminUrl} className='cursor-pointer border-2 border-[#5f6fff] font-semibold text-[#5f6fff] px-10 py-2 rounded-full hidden md:block'>Admin Panel</button>
+        <button className='cursor-pointer border-2 border-[#5f6fff] font-semibold text-[#5f6fff] px-10 py-2 rounded-full hidden md:block'>Admin Panel</button>
         <div className='flex items-center gap-4'>
             {
                 token && userData ? 

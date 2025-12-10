@@ -2,6 +2,7 @@ import React from 'react'
 import { assets } from '../assets/assets'
 
 function Footer() {
+    const adminUrl='https://prescripto-admin-vfof.onrender.com'
   return (
     <div className='md:mx-10'>
         <div className='flex flex-row sm:gird grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
@@ -19,6 +20,7 @@ function Footer() {
                     <li>About Us</li>
                     <li>Contact Us</li>
                     <li>Privacy Policy</li>
+                    <li onClick={() => window.location.href = adminUrl}>Admin</li>
                 </ul>
             </div>
 
