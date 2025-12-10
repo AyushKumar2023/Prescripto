@@ -45,7 +45,7 @@ function Navbar() {
             </NavLink>
         
         </ul>
-        <button className='cursor-pointer border-2 border-[#5f6fff] font-semibold text-[#5f6fff] px-10 py-2 rounded-full hidden md:block'>Admin Panel</button>
+        {/* <button className='cursor-pointer border-2 border-[#5f6fff] font-semibold text-[#5f6fff] px-10 py-2 rounded-full hidden md:block'>Admin Panel</button> */}
         <div className='flex items-center gap-4'>
             {
                 token && userData ? 
